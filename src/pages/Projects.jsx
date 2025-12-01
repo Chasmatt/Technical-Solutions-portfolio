@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import BackButton from "../components/BackButton";
+
 
 const Projects = () => {
     const [activeVideoId, setActiveVideoId] = useState(null);
@@ -262,18 +262,30 @@ const Projects = () => {
                         {(showDescriptionMobile || showTechMobile || showDescriptionDesktop || showTechDesktop) && (
                             <div
                                 style={{
-                                    backgroundColor: "#f9fafb",
                                     padding: "1.25rem",
                                     borderRadius: "10px",
                                     boxShadow: "0 4px 16px rgba(0,0,0,0.08)",
+
+                                    // RESPONSIVE COLORING
+                                    backgroundColor:
+                                        window.matchMedia("(prefers-color-scheme: dark)").matches
+                                            ? "#1f2937" // dark gray
+                                            : "#f9fafb", // light gray
+
+                                    color:
+                                        window.matchMedia("(prefers-color-scheme: dark)").matches
+                                            ? "#f3f4f6" // light text for dark mode
+                                            : "#374151", // dark text for light mode
+
+                                    lineHeight: "1.7rem",
                                 }}
                             >
-                                {/* MOBILE / DESKTOP DESCRIPTION */}
+                                {/* DESCRIPTION */}
                                 {(showDescriptionMobile || showDescriptionDesktop) && (
                                     <p style={{ margin: 0 }}>{project.description}</p>
                                 )}
 
-                                {/* MOBILE / DESKTOP TECH */}
+                                {/* TECH STACK */}
                                 {(showTechMobile || showTechDesktop) && (
                                     <ul style={{ paddingLeft: "1.25rem", margin: 0 }}>
                                         {project.techStack.map((tech) => (
@@ -282,6 +294,8 @@ const Projects = () => {
                                     </ul>
                                 )}
                             </div>
+                        
+
                         )}
                     </div>
                 );
