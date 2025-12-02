@@ -1,7 +1,45 @@
 import React from "react";
+import html2pdf from "html2pdf.js";
 
 
 const Resume = () => {
+    const pageBreakFix = `
+        <style>
+            /* Prevent list items from splitting across PDF pages */
+            li {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            p, h1, h2, h3, h4, h5, h6 {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            /* Ensure sections do not split awkwardly */
+            section {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+        </style>
+    `;
+
+    const generatePDF = () => {
+        const element = document.getElementById("resume-content").cloneNode(true);
+        element.insertAdjacentHTML("afterbegin", pageBreakFix);
+
+
+        const options = {
+            margin: 0.5,
+            filename: "ChasityMatthiasResume.pdf",
+            image: { type: "jpeg", quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
+        };
+
+        html2pdf().set(options).from(element).save();
+    };
+
     return (
         <div
             style={{
@@ -36,9 +74,8 @@ const Resume = () => {
 
                 {/* DOWNLOAD BUTTON */}
                 <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-                    <a
-                        href="/ChasityMatthiasResume.pdf"
-                        download
+                    <button
+                        onClick={generatePDF}
                         style={{
                             padding: "0.75rem 1.5rem",
                             fontSize: "1rem",
@@ -56,11 +93,13 @@ const Resume = () => {
                         }}
                     >
                         Download PDF Resume
-                    </a>
+                    </button>
+
                 </div>
 
                 {/* RESUME CONTAINER */}
                 <div
+                    id="resume-content"
                     style={{
                         backgroundColor: "#ffffff",
                         padding: "2rem",
@@ -82,7 +121,7 @@ const Resume = () => {
                             through years of diagnosing complex issues, collaborating with engineers,
                             and ensuring seamless software performance in real-world environments.
                             <br /><br />
-                            What drives me most is the software development lifecycle, from ideation and
+                            What drives me most is the software development life-cycle, from ideation and
                             design to deployment and optimization. I love transforming ideas into functional,
                             intuitive solutions and take pride in writing clean, maintainable code that
                             enhances user experiences.
@@ -146,7 +185,7 @@ const Resume = () => {
                             <ul style={{ paddingLeft: "1.5rem" }}>
                                 <li>
                                     Resolved customer issues daily, achieving a 95% satisfaction rate by
-                                    proactively managing incidents across web applications, databases,
+                                    pro-actively managing incidents across web applications, databases,
                                     integrated systems, and identity management.
                                 </li>
                                 <li>
@@ -172,7 +211,7 @@ const Resume = () => {
                                     Analyzed Jira ticketing data to identify high-volume support issues
                                     suitable for automation; pitched the solution to leadership and
                                     collaborated with development to design and implement AI ticketing
-                                    automation, optimizing workflows and earning Employee of the Quarter.
+                                    automation, optimizing work-flows and earning Employee of the Quarter.
                                 </li>
                             </ul>
                         </div>
@@ -229,7 +268,7 @@ const Resume = () => {
                                 </li>
                                 <li>
                                     Troubleshot complex HL7 interface errors and system issues by analyzing
-                                    logs, workflows, and integration points across upstream and downstream
+                                    logs, work-flows, and integration points across upstream and downstream
                                     systems.
                                 </li>
                             </ul>
