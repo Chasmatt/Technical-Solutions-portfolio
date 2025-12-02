@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import initSqlJs from "sql.js";
 
-
 const SQLDashboard = () => {
     const [db, setDb] = useState(null);
     const [ready, setReady] = useState(false);
@@ -41,14 +40,14 @@ const SQLDashboard = () => {
                 const database = new SQL.Database();
 
                 database.run(`
-          CREATE TABLE IF NOT EXISTS tickets (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            title TEXT,
-            priority TEXT,
-            status TEXT,
-            assigned_to TEXT
-          );
-        `);
+                    CREATE TABLE IF NOT EXISTS tickets (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        title TEXT,
+                        priority TEXT,
+                        status TEXT,
+                        assigned_to TEXT
+                    );
+                `);
 
                 setDb(database);
                 setReady(true);
@@ -94,10 +93,8 @@ const SQLDashboard = () => {
         if (!db) return;
 
         db.run(
-            `
-      INSERT INTO tickets (title, priority, status, assigned_to)
-      VALUES (?, ?, ?, ?)
-      `,
+            `INSERT INTO tickets (title, priority, status, assigned_to)
+             VALUES (?, ?, ?, ?)`,
             [title, priority, status, assignedTo]
         );
 
@@ -124,11 +121,9 @@ const SQLDashboard = () => {
         if (!db) return;
 
         db.run(
-            `
-      UPDATE tickets
-      SET title = ?, priority = ?, status = ?, assigned_to = ?
-      WHERE id = ?
-      `,
+            `UPDATE tickets
+             SET title = ?, priority = ?, status = ?, assigned_to = ?
+             WHERE id = ?`,
             [title, priority, status, assignedTo, editingId]
         );
 
@@ -142,9 +137,7 @@ const SQLDashboard = () => {
 
         db.run("DELETE FROM tickets WHERE id = ?", [id]);
 
-        // Clear form if user was editing
         resetForm();
-
         loadTickets();
     };
 
@@ -158,9 +151,14 @@ const SQLDashboard = () => {
     };
 
     return (
-        <div style={{ padding: "2rem" }}>
-           
-
+        <div
+            style={{
+                padding: isMobile ? "1rem" : "2rem",
+                width: "100%",
+                overflowX: "hidden",
+                color: "var(--text-color, #111)",
+            }}
+        >
             <h1>SQL Interactive Dashboard</h1>
 
             {!ready && <p>Initializing database...</p>}
@@ -181,14 +179,21 @@ const SQLDashboard = () => {
                 <div
                     style={{
                         flex: 1,
-                        padding: "2rem",
+                        padding: isMobile ? "1rem" : "2rem",
                         backgroundColor: "#f3f4f6",
-                        borderRadius: "12px",
-                        boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
-                        maxWidth: "600px",
+                        borderRadius: "16px",
+                        boxShadow: "0 4px 20px rgba(0,0,0,0.15)",
+
+                        // MOBILE FIXES
                         width: "100%",
+                        maxWidth: isMobile ? "360px" : "540px",  //  HARD CAP for small screens
+                        margin: "0 auto",                       //  ALWAYS centered
+                        boxSizing: "border-box",
+                        overflow: "hidden",
                     }}
                 >
+
+
                     <h2 style={{ marginBottom: "1rem" }}>
                         {editingId ? "Edit Ticket" : "Create New Ticket"}
                     </h2>
@@ -202,11 +207,11 @@ const SQLDashboard = () => {
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                             style={{
-                                ...inputStyle,
-                                border: editingId ? "2px solid #FF9325" : inputStyle.border,
-                                transition: "border 0.2s ease",
+                                ...fullInput,
+                                border: editingId ? "2px solid #FF9325" : fullInput.border,
                             }}
                         />
+
                     </div>
 
                     {/* PRIORITY */}
@@ -215,7 +220,14 @@ const SQLDashboard = () => {
                         <select
                             value={priority}
                             onChange={(e) => setPriority(e.target.value)}
-                            style={inputStyle}
+                            style={{
+                                ...inputStyle,
+                                backgroundColor: "#ffffff",
+                                color: "#111111",
+                                WebkitAppearance: "none",
+                                appearance: "none",
+                            }}
+
                         >
                             <option>Low</option>
                             <option>Medium</option>
@@ -230,7 +242,14 @@ const SQLDashboard = () => {
                         <select
                             value={status}
                             onChange={(e) => setStatus(e.target.value)}
-                            style={inputStyle}
+                            style={{
+                                ...inputStyle,
+                                backgroundColor: "#ffffff",
+                                color: "#111111",
+                                WebkitAppearance: "none",
+                                appearance: "none",
+                            }}
+
                         >
                             <option>Open</option>
                             <option>In Progress</option>
@@ -246,8 +265,9 @@ const SQLDashboard = () => {
                             type="text"
                             value={assignedTo}
                             onChange={(e) => setAssignedTo(e.target.value)}
-                            style={inputStyle}
+                            style={fullInput}
                         />
+
                     </div>
 
                     {/* BUTTONS */}
@@ -266,14 +286,22 @@ const SQLDashboard = () => {
                 <div
                     style={{
                         flex: 1,
-                        backgroundColor: "#fff",
-                        padding: "1.5rem",
-                        borderRadius: "12px",
-                        boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
+                        padding: isMobile ? "1rem" : "1.5rem",
+                        backgroundColor: "#ffffff",
+                        borderRadius: "16px",
+                        boxShadow: "0 4px 20px rgba(0,0,0,0.15)",
+
+                        // MOBILE FIXES
                         width: "100%",
-                        overflowX: isMobile ? "auto" : "visible",
+                        maxWidth: isMobile ? "360px" : "100%",
+                        margin: "0 auto",
+                        boxSizing: "border-box",
+                        overflowX: "hidden",
                     }}
                 >
+
+
+                
                     <h2>All Tickets</h2>
 
                     {tickets.length === 0 ? (
@@ -282,32 +310,27 @@ const SQLDashboard = () => {
                         <table
                             style={{
                                 width: "100%",
-                                minWidth: isMobile ? "600px" : "100%",
+                                minWidth: isMobile ? "100%" : "600px",
                                 marginTop: "1rem",
                                 borderCollapse: "collapse",
                             }}
                         >
                             <thead>
                                 <tr>
-                                    {[
-                                        "ID",
-                                        "Title",
-                                        "Priority",
-                                        "Status",
-                                        "Assigned To",
-                                        "Actions",
-                                    ].map((header) => (
-                                        <th
-                                            key={header}
-                                            style={{
-                                                borderBottom: "2px solid #ddd",
-                                                padding: "0.75rem",
-                                                textAlign: "left",
-                                            }}
-                                        >
-                                            {header}
-                                        </th>
-                                    ))}
+                                    {["ID", "Title", "Priority", "Status", "Assigned", "Actions"].map(
+                                        (header) => (
+                                            <th
+                                                key={header}
+                                                style={{
+                                                    borderBottom: "2px solid #ddd",
+                                                    padding: "0.75rem",
+                                                    textAlign: "right",
+                                                }}
+                                            >
+                                                {header}
+                                            </th>
+                                        )
+                                    )}
                                 </tr>
                             </thead>
 
@@ -319,18 +342,8 @@ const SQLDashboard = () => {
                                         <td style={cellStyle}>{ticket.priority}</td>
                                         <td style={cellStyle}>{ticket.status}</td>
                                         <td style={cellStyle}>{ticket.assigned_to}</td>
-                                        <td
-                                            style={{
-                                                padding: "0.75rem",
-                                                borderBottom: "1px solid #eee",
-                                            }}
-                                        >
-                                            <div
-                                                style={{
-                                                    display: "flex",
-                                                    gap: "0.5rem",
-                                                }}
-                                            >
+                                        <td style={{ padding: "0.75rem", borderBottom: "1px solid #eee" }}>
+                                            <div style={{ display: "flex", gap: "0.5rem" }}>
                                                 <button
                                                     onClick={() => startEditing(ticket)}
                                                     style={grayEditButton}
@@ -359,6 +372,8 @@ const SQLDashboard = () => {
 
 const inputStyle = {
     width: "100%",
+    maxWidth: "100%",       // FIX mismatch caused by container
+    boxSizing: "border-box",// Ensures padding doesn’t increase width
     padding: "0.75rem",
     marginTop: "0.5rem",
     backgroundColor: "#ffffff",
@@ -366,6 +381,27 @@ const inputStyle = {
     borderRadius: "8px",
     boxShadow: "inset 0 2px 4px rgba(0,0,0,0.08)",
 };
+
+const fullInput = {
+    width: "100%",
+    maxWidth: "100%",
+    boxSizing: "border-box",
+    padding: "0.75rem",
+    marginTop: "0.5rem",
+
+    //  Dark Mode Fix – forces LIGHT input text always
+    backgroundColor: "#ffffff",
+    color: "#111111",
+    WebkitTextFillColor: "#111111",   // iOS/Android fix
+    caretColor: "#111111",
+    colorScheme: "light",             // forces browser to NOT dark-mode the field
+
+    border: "1px solid #d1d5db",
+    borderRadius: "8px",
+    boxShadow: "inset 0 2px 4px rgba(0,0,0,0.08)",
+};
+
+
 
 const createButtonStyle = {
     marginTop: "1.75rem",
@@ -385,7 +421,7 @@ const editButtonStyle = {
     padding: "0.75rem 1.5rem",
     fontSize: "1rem",
     fontWeight: 600,
-    backgroundColor: "#6b7280", // GRAY FOR EDIT
+    backgroundColor: "#6b7280",
     color: "#fff",
     border: "none",
     borderRadius: "8px",
@@ -394,7 +430,7 @@ const editButtonStyle = {
 
 const grayEditButton = {
     padding: "0.5rem 1rem",
-    backgroundColor: "#6b7280", // GRAY
+    backgroundColor: "#6b7280",
     color: "white",
     border: "none",
     borderRadius: "6px",
