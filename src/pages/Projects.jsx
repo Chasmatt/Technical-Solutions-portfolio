@@ -82,14 +82,6 @@ const Projects = () => {
             description:
                 "Developed a scheduling system supporting appointment and client management with MySQL integration. Implemented localization and time zone conversions for global usability.",
         },
-        {
-            id: 4,
-            title: "Data Management & Reporting Project",
-            videoSrc: "/videos/Project4.mp4",
-            techStack: ["MySQL", "SQL", "Data Cleaning", "Data Reporting"],
-            description:
-                "Developed SQL-based reports and visualizations to analyze monthly rental revenue by film category.",
-        },
     ];
 
     return (
