@@ -391,8 +391,34 @@ const Projects = () => {
                                     </ul>
                                 )}
                             </div>
-                        
 
+
+                        )}
+
+                        {/* GITHUB LINK */}
+                        {project.repoUrl && (
+                            <div
+                                style={{
+                                    marginTop: "1rem",
+                                    textAlign: "center",
+                                    fontSize: "0.9rem",
+                                    color: "#6b7280",
+                                }}
+                            >
+                                <strong style={{ color: "#111827" }}>GitHub:</strong>{" "}
+                                <a
+                                    href={project.repoUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{
+                                        color: "#FF9325",
+                                        textDecoration: "none",
+                                        wordBreak: "break-all",
+                                    }}
+                                >
+                                    {project.repoUrl}
+                                </a>
+                            </div>
                         )}
                     </div>
                 );
