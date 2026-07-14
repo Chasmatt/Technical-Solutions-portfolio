@@ -63,9 +63,18 @@ const Home = () => {
                         color: '#6B7280'
                     }}
                 >
-                    I'm Chasity Matthias, a Software Engineer with 8 years of software support
-                    experience. Specializing in full-stack development and customer-centered problem solving.
-                    
+                    I'm Chasity Matthias, a full-stack <strong>Software Engineer</strong> with 8 years of software support experience. I design and ship production systems end-to-end &mdash; from event-sourced backend services in <strong>ASP.NET Core</strong> to modern <strong>React</strong> and <strong>Astro</strong> front-ends, cross-platform <strong>.NET MAUI</strong> mobile apps, and cloud deployments on <strong>AWS (EC2 + RDS)</strong>.
+                </p>
+
+                <p
+                    style={{
+                        fontSize: isMobile ? '1rem' : '1.125rem',
+                        lineHeight: '1.75rem',
+                        marginBottom: '1rem',
+                        color: '#6B7280'
+                    }}
+                >
+                    My recent work includes <strong>Silo</strong>, a food-and-beverage inventory platform with an immutable ledger, multi-branch design, and an AI-powered allergen detector wired to the Anthropic Claude API &mdash; deployed on AWS with 92 unit and 41 integration tests. I care about clean domain modeling, thoughtful testing, and shipping software that actually helps the people using it.
                 </p>
 
                 <p
@@ -74,7 +83,7 @@ const Home = () => {
                         lineHeight: '1.75rem'
                     }}
                 >
-                    Bachelor's Degree in <strong>Software Engineering.</strong> I am Certified in <strong>Front-End Development, ITIL, AWS Cloud Practitioner, and CompTIA Project+</strong>. I bring a fusion of engineering insight and real-world operational readiness, capable of bridging the gap between product development and customer satisfaction.
+                    Bachelor's Degree in <strong>Software Engineering.</strong> Certified in <strong>Front-End Development, ITIL, AWS Cloud Practitioner, and CompTIA Project+</strong>. Eight years of customer-facing software support brings the operational readiness engineering teams often miss &mdash; I know what production feels like when it breaks, and I build systems accordingly.
                 </p>
 
                 {/* Button Section */}

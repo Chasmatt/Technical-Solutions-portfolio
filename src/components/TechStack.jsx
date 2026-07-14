@@ -4,19 +4,27 @@ import { motion } from 'framer-motion';
 const categories = [
     {
         name: "Front-End Development",
-        skills: ["HTML", "CSS", "JavaScript", "API Integration"]
+        skills: ["React 18", "Astro", "Vite", "JavaScript", "HTML", "CSS", "Tailwind CSS", "Framer Motion", "XAML"]
     },
     {
         name: "Back-End Development",
-        skills: ["C#", "Python"]
+        skills: ["C#", "ASP.NET Core 8", ".NET 8", "Entity Framework Core", "Python", "REST API Design", "JWT Authentication"]
     },
     {
         name: "Databases",
-        skills: ["SQL", "MySQL", "SQLite", "DBeaver"]
+        skills: ["PostgreSQL", "MySQL", "SQLite", "SQL", "DBeaver"]
     },
     {
-        name: "Tools & Frameworks",
-        skills: ["Observability Tools(DataDog)", "ITSM (Jira)", "GitHub", "Node.js", ".NET", ".NET MAUI"]
+        name: "Mobile Development",
+        skills: [".NET MAUI", "MVVM", "Cross-Platform (Android + iOS)", "Local Notifications"]
+    },
+    {
+        name: "Cloud & DevOps",
+        skills: ["AWS (EC2, RDS)", "Nginx", "systemd", "Netlify", "GitHub", "GitHub Actions", "CI/CD"]
+    },
+    {
+        name: "Testing & Integrations",
+        skills: ["xUnit", "Unit + Integration Testing", "Anthropic Claude API", "Observability (DataDog)", "ITSM (Jira)", "Node.js"]
     }
 ];
 

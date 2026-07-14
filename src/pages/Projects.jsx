@@ -28,14 +28,39 @@ const Projects = () => {
 
     const projects = [
         {
+            id: 5,
+            title: "Silo — Food & Beverage Inventory Platform",
+            repoUrl: "https://github.com/Chasmatt/Silo_BOH-Inventory-Management",
+            techStack: [
+                "ASP.NET Core 8", "C#", "React 18", "PostgreSQL", "AWS (EC2 + RDS)",
+                "Entity Framework Core", "JWT Authentication", "xUnit", "Anthropic Claude API",
+                "Event Sourcing", "Nginx", "systemd"
+            ],
+            description:
+                "Full-stack inventory management platform for multi-location restaurants. Features an immutable event-sourced ledger, multi-branch design with branch-scoped JWT claims, and a BFS-based unit conversion engine that handles cross-category conversions (jars → ounces, cases → pounds). AI-driven allergen detection via the Anthropic Claude API auto-scans every new item for FDA Big 9 allergens. Deployed on AWS EC2 + RDS behind Nginx with systemd-managed .NET service. 92 unit + 41 integration tests (xUnit).",
+        },
+        {
+            id: 6,
+            title: "Athlete Connection — Sports Agency Website",
+            liveUrl: "https://athleteconnectionsportsgroup.netlify.app",
+            repoUrl: "https://github.com/Chasmatt/athlete_connection",
+            techStack: [
+                "Astro 5", "Tailwind CSS", "TypeScript", "Netlify", "Netlify Forms",
+                "Static Site Generation", "Responsive Design"
+            ],
+            description:
+                "Marketing website for a boutique basketball sports agency, connecting high-school, college, and professional players with representation and career development. Built with Astro 5 (zero-JS by default) and Tailwind CSS for fast Core Web Vitals. Contact form uses Netlify's native form handling with a honeypot for bot protection. Continuously deployed to Netlify on every push to main.",
+        },
+        {
             id: 1,
             title: "Mobile App / Student Course & Term Tracker",
             videoSrc: "/videos/Project1.mp4",
+            repoUrl: "https://github.com/Chasmatt/term-tracker-mobile",
             techStack: [
-                ".NET MAUI", "C#", "SQLite", "MVVM", "XAML", "Mobile UI"
+                ".NET MAUI", "C#", "SQLite", "MVVM", "XAML", "Cross-Platform (Android + iOS)", "Local Notifications"
             ],
             description:
-                "Built a cross-platform mobile app to track student terms, courses, and assessments. Implemented full local data storage with SQLite and full CRUD functionality. Designed a responsive, multi-page interface using XAML and MVVM for clean, scalable architecture.",
+                "Cross-platform mobile app for tracking academic terms, courses, and assessments. Local-first with SQLite persistence and native notifications on term/course/assessment dates. Built with .NET MAUI + MVVM for clean separation between UI (XAML) and data services. Ships to both Android and iOS from a single codebase.",
         },
         {
             id: 2,
@@ -149,70 +174,160 @@ const Projects = () => {
                             {project.title}
                         </h2>
 
-                        {/* VIDEO */}
+                        {/* VIDEO OR LINK CARD */}
                         <div style={{ marginBottom: "1.5rem" }}>
-                            {activeVideoId === project.id ? (
-                                <video
-                                    controls
-                                    style={{
-                                        width: "100%",
-                                        borderRadius: "12px",
-                                        boxShadow: "0px 8px 24px rgba(0,0,0,0.20)",
-                                    }}
-                                >
-                                    <source src={project.videoSrc} type="video/mp4" />
-                                </video>
+                            {project.videoSrc ? (
+                                activeVideoId === project.id ? (
+                                    <video
+                                        controls
+                                        style={{
+                                            width: "100%",
+                                            borderRadius: "12px",
+                                            boxShadow: "0px 8px 24px rgba(0,0,0,0.20)",
+                                        }}
+                                    >
+                                        <source src={project.videoSrc} type="video/mp4" />
+                                    </video>
+                                ) : (
+                                    <div
+                                        onClick={() => setActiveVideoId(project.id)}
+                                        style={{
+                                            width: "100%",
+                                            height: isMobile ? "200px" : "260px",
+                                            borderRadius: "12px",
+                                            background:
+                                                "linear-gradient(135deg, #111827, #4b5563, #111827)",
+                                            boxShadow: "0px 8px 24px rgba(0,0,0,0.25)",
+                                            display: "flex",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                            cursor: "pointer",
+                                            position: "relative",
+                                        }}
+                                    >
+                                        <span
+                                            style={{
+                                                position: "absolute",
+                                                top: "1rem",
+                                                left: "1.5rem",
+                                                color: "#e5e7eb",
+                                                fontSize: "0.85rem",
+                                                textTransform: "uppercase",
+                                            }}
+                                        >
+                                            Tap to Play Demo
+                                        </span>
+                                        <div
+                                            style={{
+                                                width: "60px",
+                                                height: "60px",
+                                                borderRadius: "50%",
+                                                border: "2px solid rgba(255,255,255,0.8)",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                justifyContent: "center",
+                                            }}
+                                        >
+                                            <div
+                                                style={{
+                                                    marginLeft: "4px",
+                                                    width: 0,
+                                                    height: 0,
+                                                    borderTop: "12px solid transparent",
+                                                    borderBottom: "12px solid transparent",
+                                                    borderLeft: "20px solid white",
+                                                }}
+                                            />
+                                        </div>
+                                    </div>
+                                )
                             ) : (
                                 <div
-                                    onClick={() => setActiveVideoId(project.id)}
                                     style={{
                                         width: "100%",
-                                        height: isMobile ? "200px" : "260px",
+                                        minHeight: isMobile ? "200px" : "260px",
                                         borderRadius: "12px",
                                         background:
                                             "linear-gradient(135deg, #111827, #4b5563, #111827)",
                                         boxShadow: "0px 8px 24px rgba(0,0,0,0.25)",
                                         display: "flex",
+                                        flexDirection: "column",
                                         alignItems: "center",
                                         justifyContent: "center",
-                                        cursor: "pointer",
-                                        position: "relative",
+                                        gap: "1rem",
+                                        padding: "2rem 1.5rem",
+                                        textAlign: "center",
                                     }}
                                 >
                                     <span
                                         style={{
-                                            position: "absolute",
-                                            top: "1rem",
-                                            left: "1.5rem",
                                             color: "#e5e7eb",
                                             fontSize: "0.85rem",
                                             textTransform: "uppercase",
+                                            letterSpacing: "0.1em",
                                         }}
                                     >
-                                        Tap to Play Demo
+                                        Live Project
                                     </span>
                                     <div
                                         style={{
-                                            width: "60px",
-                                            height: "60px",
-                                            borderRadius: "50%",
-                                            border: "2px solid rgba(255,255,255,0.8)",
                                             display: "flex",
-                                            alignItems: "center",
+                                            gap: "0.75rem",
+                                            flexWrap: "wrap",
                                             justifyContent: "center",
                                         }}
                                     >
-                                        <div
-                                            style={{
-                                                marginLeft: "4px",
-                                                width: 0,
-                                                height: 0,
-                                                borderTop: "12px solid transparent",
-                                                borderBottom: "12px solid transparent",
-                                                borderLeft: "20px solid white",
-                                            }}
-                                        />
+                                        {project.liveUrl && (
+                                            <a
+                                                href={project.liveUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                style={{
+                                                    padding: "0.75rem 1.25rem",
+                                                    fontSize: "0.95rem",
+                                                    fontWeight: 600,
+                                                    color: "#111827",
+                                                    background:
+                                                        "linear-gradient(90deg, #ffce83, #ffc47a, #ffb971, #ffa850, #ff9325)",
+                                                    borderRadius: "8px",
+                                                    textDecoration: "none",
+                                                    boxShadow: "0 4px 14px rgba(0,0,0,0.15)",
+                                                }}
+                                            >
+                                                Visit Live Site &rarr;
+                                            </a>
+                                        )}
+                                        {project.repoUrl && (
+                                            <a
+                                                href={project.repoUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                style={{
+                                                    padding: "0.75rem 1.25rem",
+                                                    fontSize: "0.95rem",
+                                                    fontWeight: 600,
+                                                    color: "#f9fafb",
+                                                    background: "transparent",
+                                                    border: "1px solid rgba(255,255,255,0.4)",
+                                                    borderRadius: "8px",
+                                                    textDecoration: "none",
+                                                }}
+                                            >
+                                                View on GitHub
+                                            </a>
+                                        )}
                                     </div>
+                                    {!project.liveUrl && (
+                                        <span
+                                            style={{
+                                                color: "#9ca3af",
+                                                fontSize: "0.8rem",
+                                                fontStyle: "italic",
+                                            }}
+                                        >
+                                            Live deployment is private (AWS) &mdash; source and full details on GitHub
+                                        </span>
+                                    )}
                                 </div>
                             )}
                         </div>
