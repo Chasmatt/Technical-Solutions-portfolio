@@ -63,7 +63,7 @@ const Home = () => {
                         color: '#6B7280'
                     }}
                 >
-                    I'm Chasity Matthias, a full-stack <strong>Software Engineer</strong> with 8 years of software support experience. I design and ship production systems end-to-end &mdash; from event-sourced backend services in <strong>ASP.NET Core</strong> to modern <strong>React</strong> and <strong>Astro</strong> front-ends, cross-platform <strong>.NET MAUI</strong> mobile apps, and cloud deployments on <strong>AWS (EC2 + RDS)</strong>.
+                    I&rsquo;m a full-stack Software Engineer who builds and delivers production-ready applications from front to back. My experience includes event-sourced backend services in ASP.NET Core, modern front-end applications with React and Astro, cross-platform mobile applications with .NET MAUI, and cloud deployments on AWS using EC2 and RDS.
                 </p>
 
                 <p
@@ -74,16 +74,39 @@ const Home = () => {
                         color: '#6B7280'
                     }}
                 >
-                    My recent work includes <strong>Silo</strong>, a food-and-beverage inventory platform with an immutable ledger, multi-branch design, and an AI-powered allergen detector wired to the Anthropic Claude API &mdash; deployed on AWS with 92 unit and 41 integration tests. I care about clean domain modeling, thoughtful testing, and shipping software that actually helps the people using it.
+                    My recent work includes Silo, a food and beverage inventory platform built on an immutable inventory ledger, a multi-branch architecture, and an AI-powered allergen-detection feature integrated with the Anthropic Claude API. The application is deployed on AWS and supported by 92 unit tests and 41 integration tests.
                 </p>
 
                 <p
                     style={{
                         fontSize: isMobile ? '1rem' : '1.125rem',
-                        lineHeight: '1.75rem'
+                        lineHeight: '1.75rem',
+                        marginBottom: '1rem',
+                        color: '#6B7280'
                     }}
                 >
-                    Bachelor's Degree in <strong>Software Engineering.</strong> Certified in <strong>Front-End Development, ITIL, AWS Cloud Practitioner, and CompTIA Project+</strong>. Eight years of customer-facing software support brings the operational readiness engineering teams often miss &mdash; I know what production feels like when it breaks, and I build systems accordingly.
+                    I&rsquo;m passionate about clean domain modeling, thoughtful testing, reliable architecture, and building software that solves meaningful problems for the people who use it.
+                </p>
+
+                <p
+                    style={{
+                        fontSize: isMobile ? '1rem' : '1.125rem',
+                        lineHeight: '1.75rem',
+                        marginBottom: '1rem',
+                        color: '#6B7280'
+                    }}
+                >
+                    I hold a bachelor&rsquo;s degree in Software Engineering and certifications in Front-End Development, ITIL, AWS Cloud Practitioner, and CompTIA Project+.
+                </p>
+
+                <p
+                    style={{
+                        fontSize: isMobile ? '1rem' : '1.125rem',
+                        lineHeight: '1.75rem',
+                        color: '#6B7280'
+                    }}
+                >
+                    Before moving into software engineering, I spent eight years supporting customer-facing software in production environments. That experience shaped the way I approach engineering today: I understand how software behaves outside the development environment, how failures affect users, and why maintainability, observability, and operational readiness matter.
                 </p>
 
                 {/* Button Section */}
