@@ -178,7 +178,7 @@ const SQLDashboard = () => {
                 {/* LEFT � FORM CARD */}
                 <div
                     style={{
-                        flex: 1,
+                        flex: isMobile ? "1" : "0 0 340px",
                         padding: isMobile ? "1rem" : "2rem",
                         backgroundColor: "#f3f4f6",
                         borderRadius: "16px",
@@ -186,8 +186,8 @@ const SQLDashboard = () => {
 
                         // MOBILE FIXES
                         width: "100%",
-                        maxWidth: isMobile ? "360px" : "540px",  //  HARD CAP for small screens
-                        margin: "0 auto",                       //  ALWAYS centered
+                        maxWidth: isMobile ? "360px" : "340px",
+                        margin: "0 auto",
                         boxSizing: "border-box",
                         overflow: "hidden",
                     }}
@@ -205,6 +205,7 @@ const SQLDashboard = () => {
                             ref={titleRef}
                             type="text"
                             value={title}
+                            maxLength={25}
                             onChange={(e) => setTitle(e.target.value)}
                             style={{
                                 ...fullInput,
@@ -264,6 +265,7 @@ const SQLDashboard = () => {
                         <input
                             type="text"
                             value={assignedTo}
+                            maxLength={25}
                             onChange={(e) => setAssignedTo(e.target.value)}
                             style={fullInput}
                         />
@@ -286,6 +288,7 @@ const SQLDashboard = () => {
                 <div
                     style={{
                         flex: 1,
+                        minWidth: 0,
                         padding: isMobile ? "1rem" : "1.5rem",
                         backgroundColor: "#ffffff",
                         borderRadius: "16px",
@@ -296,7 +299,7 @@ const SQLDashboard = () => {
                         maxWidth: isMobile ? "360px" : "100%",
                         margin: "0 auto",
                         boxSizing: "border-box",
-                        overflowX: "auto",
+                        overflow: "visible",
                     }}
                 >
 
@@ -451,6 +454,7 @@ const cellStyle = {
     padding: "0.5rem",
     borderBottom: "1px solid #eee",
     fontSize: "0.9rem",
+    whiteSpace: "nowrap",
 };
 
 export default SQLDashboard;
