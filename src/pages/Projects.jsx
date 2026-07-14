@@ -72,16 +72,6 @@ const Projects = () => {
             description:
                 "Built an interactive Angular web app integrating the World Bank API and an SVG world map to display real-time economic and country-level data.",
         },
-        {
-            id: 3,
-            title: "Scheduling Desktop Application (C# / WinForms)",
-            videoSrc: "/videos/Project3.mp4",
-            techStack: [
-                "C#", ".NET", "Windows Forms", "MySQL", "Visual Studio", "Localization"
-            ],
-            description:
-                "Developed a scheduling system supporting appointment and client management with MySQL integration. Implemented localization and time zone conversions for global usability.",
-        },
     ];
 
     return (

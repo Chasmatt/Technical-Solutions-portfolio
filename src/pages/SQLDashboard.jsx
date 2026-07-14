@@ -175,7 +175,7 @@ const SQLDashboard = () => {
                     width: "100%",
                 }}
             >
-                {/* LEFT — FORM CARD */}
+                {/* LEFT ï¿½ FORM CARD */}
                 <div
                     style={{
                         flex: 1,
@@ -282,7 +282,7 @@ const SQLDashboard = () => {
                     )}
                 </div>
 
-                {/* RIGHT — TICKETS TABLE */}
+                {/* RIGHT ï¿½ TICKETS TABLE */}
                 <div
                     style={{
                         flex: 1,
@@ -296,12 +296,12 @@ const SQLDashboard = () => {
                         maxWidth: isMobile ? "360px" : "100%",
                         margin: "0 auto",
                         boxSizing: "border-box",
-                        overflowX: "hidden",
+                        overflowX: "auto",
                     }}
                 >
 
 
-                
+
                     <h2>All Tickets</h2>
 
                     {tickets.length === 0 ? (
@@ -310,7 +310,6 @@ const SQLDashboard = () => {
                         <table
                             style={{
                                 width: "100%",
-                                minWidth: isMobile ? "100%" : "600px",
                                 marginTop: "1rem",
                                 borderCollapse: "collapse",
                             }}
@@ -323,8 +322,10 @@ const SQLDashboard = () => {
                                                 key={header}
                                                 style={{
                                                     borderBottom: "2px solid #ddd",
-                                                    padding: "0.75rem",
-                                                    textAlign: "right",
+                                                    padding: "0.5rem 0.5rem",
+                                                    textAlign: "left",
+                                                    fontSize: "0.85rem",
+                                                    color: "#374151",
                                                 }}
                                             >
                                                 {header}
@@ -342,8 +343,8 @@ const SQLDashboard = () => {
                                         <td style={cellStyle}>{ticket.priority}</td>
                                         <td style={cellStyle}>{ticket.status}</td>
                                         <td style={cellStyle}>{ticket.assigned_to}</td>
-                                        <td style={{ padding: "0.75rem", borderBottom: "1px solid #eee" }}>
-                                            <div style={{ display: "flex", gap: "0.5rem" }}>
+                                        <td style={{ padding: "0.5rem", borderBottom: "1px solid #eee" }}>
+                                            <div style={{ display: "flex", gap: "0.4rem", whiteSpace: "nowrap" }}>
                                                 <button
                                                     onClick={() => startEditing(ticket)}
                                                     style={grayEditButton}
@@ -373,7 +374,7 @@ const SQLDashboard = () => {
 const inputStyle = {
     width: "100%",
     maxWidth: "100%",       // FIX mismatch caused by container
-    boxSizing: "border-box",// Ensures padding doesn’t increase width
+    boxSizing: "border-box",// Ensures padding doesnï¿½t increase width
     padding: "0.75rem",
     marginTop: "0.5rem",
     backgroundColor: "#ffffff",
@@ -389,7 +390,7 @@ const fullInput = {
     padding: "0.75rem",
     marginTop: "0.5rem",
 
-    //  Dark Mode Fix – forces LIGHT input text always
+    //  Dark Mode Fix ï¿½ forces LIGHT input text always
     backgroundColor: "#ffffff",
     color: "#111111",
     WebkitTextFillColor: "#111111",   // iOS/Android fix
@@ -447,8 +448,9 @@ const deleteButtonStyle = {
 };
 
 const cellStyle = {
-    padding: "0.75rem",
+    padding: "0.5rem",
     borderBottom: "1px solid #eee",
+    fontSize: "0.9rem",
 };
 
 export default SQLDashboard;
