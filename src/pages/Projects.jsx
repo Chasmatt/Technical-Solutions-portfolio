@@ -30,6 +30,7 @@ const Projects = () => {
         {
             id: 5,
             title: "Silo — Food & Beverage Inventory Platform",
+            videoSrc: "/videos/silo.mp4",
             repoUrl: "https://github.com/Chasmatt/Silo_BOH-Inventory-Management",
             techStack: [
                 "ASP.NET Core 8", "C#", "React 18", "PostgreSQL", "AWS (EC2 + RDS)",
