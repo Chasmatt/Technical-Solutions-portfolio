@@ -299,7 +299,7 @@ const SQLDashboard = () => {
                         maxWidth: isMobile ? "360px" : "100%",
                         margin: "0 auto",
                         boxSizing: "border-box",
-                        overflow: "visible",
+                        overflow: "hidden",
                     }}
                 >
 
@@ -310,6 +310,7 @@ const SQLDashboard = () => {
                     {tickets.length === 0 ? (
                         <p style={{ marginTop: "1rem" }}>No tickets available.</p>
                     ) : (
+                        <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
                         <table
                             style={{
                                 width: "100%",
@@ -367,6 +368,7 @@ const SQLDashboard = () => {
                                 ))}
                             </tbody>
                         </table>
+                        </div>
                     )}
                 </div>
             </div>
