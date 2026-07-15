@@ -280,25 +280,6 @@ const Projects = () => {
                                                 Visit Live Site &rarr;
                                             </a>
                                         )}
-                                        {project.repoUrl && (
-                                            <a
-                                                href={project.repoUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                style={{
-                                                    padding: "0.75rem 1.25rem",
-                                                    fontSize: "0.95rem",
-                                                    fontWeight: 600,
-                                                    color: "#f9fafb",
-                                                    background: "transparent",
-                                                    border: "1px solid rgba(255,255,255,0.4)",
-                                                    borderRadius: "8px",
-                                                    textDecoration: "none",
-                                                }}
-                                            >
-                                                View on GitHub
-                                            </a>
-                                        )}
                                     </div>
                                     {!project.liveUrl && (
                                         <span
