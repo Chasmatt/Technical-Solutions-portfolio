@@ -228,7 +228,8 @@ const Projects = () => {
                                 <div
                                     style={{
                                         width: "100%",
-                                        minHeight: isMobile ? "200px" : "260px",
+                                        height: isMobile ? "200px" : "260px",
+                                        boxSizing: "border-box",
                                         borderRadius: "12px",
                                         background:
                                             "linear-gradient(135deg, #111827, #4b5563, #111827)",
