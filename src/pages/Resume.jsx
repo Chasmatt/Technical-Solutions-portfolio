@@ -116,21 +116,19 @@ const Resume = () => {
                     <section style={{ marginBottom: "2rem" }}>
                         <h2 style={{ color: "#FF9325", fontSize: "1.5rem" }}>Professional Summary</h2>
                         <p>
-                            Software Engineer with over 8 years of technical experience. I bring a unique
-                            blend of problem-solving expertise and customer-focused insight, developed
-                            through years of diagnosing complex issues, collaborating with engineers,
-                            and ensuring seamless software performance in real-world environments.
+                            Full-stack Software Engineer with a Bachelor&rsquo;s in Software Engineering and 8+
+                            years of production software experience. I design and ship end-to-end applications
+                            &mdash; from event-sourced backend services in ASP.NET Core and modern React and
+                            Astro front-ends to cross-platform .NET MAUI mobile apps and AWS deployments on
+                            EC2 and RDS. My recent work includes Silo, a food and beverage inventory platform
+                            with an immutable inventory ledger, a multi-branch architecture, and AI-powered
+                            allergen detection integrated with the Anthropic Claude API &mdash; deployed on AWS
+                            and supported by 92 unit tests and 41 integration tests.
                             <br /><br />
-                            What drives me most is the software development life-cycle, from ideation and
-                            design to deployment and optimization. I love transforming ideas into functional,
-                            intuitive solutions and take pride in writing clean, maintainable code that
-                            enhances user experiences.
-                            <br /><br />
-                            My professional background and academic career have provided me with a strong
-                            foundation in SQL, API integrations, front-end and back-end development, and
-                            system monitoring, along with hands-on experience with incident management and
-                            process improvement. I thrive in environments where collaboration, innovation,
-                            and technical excellence meet.
+                            Years of customer-facing software support shape the way I engineer today: I
+                            understand how software behaves outside the development environment, how failures
+                            affect users, and why maintainability, observability, and operational readiness
+                            matter from day one.
                         </p>
                     </section>
 
@@ -138,12 +136,15 @@ const Resume = () => {
                     <section style={{ marginBottom: "2rem" }}>
                         <h2 style={{ color: "#FF9325", fontSize: "1.5rem" }}>Technical Skills</h2>
                         <ul style={{ paddingLeft: "1.25rem" }}>
-                            <li><strong>Front-End:</strong> HTML, CSS, JavaScript, TypeScript, Angular, Node.js</li>
-                            <li><strong>Back-End:</strong> C#, Python, .NET, .NET MAUI, API Integration, WINFORMS</li>
-                            <li><strong>Databases:</strong> SQL, MySQL, SQLite, DBeaver</li>
-                            <li><strong>Tools:</strong> GitHub, Jira, Datadog, Postman, Visual Studio, BASH, FIGMA</li>
-                            <li><strong>Cloud & Infrastructure:</strong> AWS Certified Cloud Practitioner</li>
-                            <li><strong>Certifications:</strong> Front-End Developer, ITIL, CompTIA Project+</li>
+                            <li><strong>Languages:</strong> C#, JavaScript, TypeScript, Python, SQL, HTML, CSS, XAML</li>
+                            <li><strong>Back-End:</strong> ASP.NET Core 8, .NET 8, Entity Framework Core, REST API design, JWT authentication, Node.js</li>
+                            <li><strong>Front-End:</strong> React 18, Astro 5, Angular, Vite, Tailwind CSS, Framer Motion</li>
+                            <li><strong>Mobile:</strong> .NET MAUI (Android + iOS), MVVM, local notifications</li>
+                            <li><strong>Databases:</strong> PostgreSQL, MySQL, SQLite, DBeaver</li>
+                            <li><strong>Cloud & DevOps:</strong> AWS (EC2, RDS), Nginx, systemd, Netlify, GitHub Actions, CI/CD</li>
+                            <li><strong>Testing:</strong> xUnit, unit & integration testing, Postman</li>
+                            <li><strong>Tools & Integrations:</strong> GitHub, Jira, Datadog, Visual Studio, Bash, Figma, Anthropic Claude API</li>
+                            <li><strong>Certifications:</strong> AWS Certified Cloud Practitioner, Front-End Developer, ITIL, CompTIA Project+</li>
                         </ul>
                     </section>
 
@@ -156,7 +157,7 @@ const Resume = () => {
                         <div style={{ marginBottom: "1.25rem" }}>
                             <h3>Bachelor of Science, Software Engineering</h3>
                             <p style={{ margin: 0, fontStyle: "italic" }}>
-                                Anticipated Graduation: December 2025
+                                Graduated: December 2025
                             </p>
                             <p style={{ marginTop: "0.15rem" }}>
                                 Western Governors University | Salt Lake City, UT
@@ -172,104 +173,183 @@ const Resume = () => {
                         </div>
                     </section>
 
+                    {/* PROJECTS */}
+                    <section style={{ marginBottom: "2rem" }}>
+                        <h2 style={{ color: "#FF9325", marginBottom: "1rem", fontSize: "1.5rem" }}>
+                            Projects
+                        </h2>
+
+                        {/* PROJECT: SILO */}
+                        <div style={{ marginBottom: "1.5rem" }}>
+                            <h3>Silo &mdash; Food & Beverage Inventory Platform</h3>
+                            <p style={{ margin: 0, fontStyle: "italic" }}>
+                                Solo-built, deployed to AWS &middot; github.com/Chasmatt/Silo_BOH-Inventory-Management
+                            </p>
+                            <ul style={{ paddingLeft: "1.5rem", marginTop: "0.5rem" }}>
+                                <li>
+                                    Full-stack inventory platform for multi-location restaurants; ASP.NET Core 8 +
+                                    Entity Framework Core backend, React 18 + Vite frontend, PostgreSQL on AWS RDS,
+                                    hosted on EC2 behind Nginx.
+                                </li>
+                                <li>
+                                    Designed an immutable event-sourced inventory ledger &mdash; a single
+                                    <code> IInventoryEvent</code> interface unifies five distinct workflows
+                                    (bulk prep, invoice commits, waste, transfers, station prep).
+                                </li>
+                                <li>
+                                    Built a BFS-based unit conversion engine handling cross-category conversions
+                                    (jars &rarr; ounces, cases &rarr; pounds) via ingredient-specific overrides.
+                                </li>
+                                <li>
+                                    Wrote a recursive recipe cost engine that rolls up sub-recipes and divides
+                                    by batch yield for per-portion cost.
+                                </li>
+                                <li>
+                                    Integrated the Anthropic Claude API for AI-powered allergen detection using a
+                                    fire-and-forget pattern so the AI call never blocks a user commit.
+                                </li>
+                                <li>
+                                    <strong>92 unit tests + 41 integration tests</strong> (xUnit), covering services,
+                                    cost engine, unit conversion, and end-to-end HTTP flows.
+                                </li>
+                            </ul>
+                        </div>
+
+                        {/* PROJECT: ATHLETE CONNECTION */}
+                        <div style={{ marginBottom: "1.5rem" }}>
+                            <h3>Athlete Connection &mdash; Sports Agency Website</h3>
+                            <p style={{ margin: 0, fontStyle: "italic" }}>
+                                Deployed to Netlify &middot; athleteconnectionsportsgroup.netlify.app
+                            </p>
+                            <ul style={{ paddingLeft: "1.5rem", marginTop: "0.5rem" }}>
+                                <li>
+                                    Marketing site for a boutique basketball sports agency; static-generated
+                                    Astro 5 + Tailwind CSS for fast Core Web Vitals.
+                                </li>
+                                <li>
+                                    Implemented Netlify Forms with honeypot bot protection; continuously deployed
+                                    on every push to main via GitHub &rarr; Netlify integration.
+                                </li>
+                            </ul>
+                        </div>
+
+                        {/* PROJECT: TERM TRACKER */}
+                        <div>
+                            <h3>Term Tracker &mdash; Cross-Platform Mobile App</h3>
+                            <p style={{ margin: 0, fontStyle: "italic" }}>
+                                github.com/Chasmatt/term-tracker-mobile
+                            </p>
+                            <ul style={{ paddingLeft: "1.5rem", marginTop: "0.5rem" }}>
+                                <li>
+                                    Local-first mobile app for managing academic terms, courses, and assessments;
+                                    single .NET MAUI codebase shipping to Android and iOS.
+                                </li>
+                                <li>
+                                    MVVM architecture with SQLite persistence and native local notifications for
+                                    term, course, and assessment dates.
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
                     {/* EXPERIENCE */}
                     <section style={{ marginBottom: "2rem" }}>
                         <h2 style={{ color: "#FF9325", marginBottom: "1rem", fontSize: "1.5rem" }}>
                             Technical Experience
                         </h2>
 
-                        {/* ROLE 1 */}
+                        {/* ROLE 1 - IVIRMA (CURRENT) */}
+                        <div style={{ marginBottom: "1.75rem" }}>
+                            <h3>Application Support Engineer, Tier III | iviRMA | Remote</h3>
+                            <p style={{ fontStyle: "italic" }}>June 2025 to Present</p>
+                            <ul style={{ paddingLeft: "1.5rem" }}>
+                                <li>
+                                    Write and execute SQL <code>INSERT</code>, <code>UPDATE</code>, and
+                                    <code> DELETE</code> statements against the production database to add
+                                    records, correct data, debug application issues, and maintain reporting
+                                    pipelines.
+                                </li>
+                                <li>
+                                    Query the SQL Server database to investigate customer-reported issues,
+                                    validate data integrity, and isolate defects in the Artemis EHR and Patient
+                                    Portal applications.
+                                </li>
+                                <li>
+                                    Provide technical support for the Patient Portal application, resolving
+                                    user-facing issues and escalating engineering-level defects with reproduction
+                                    steps and root-cause analysis.
+                                </li>
+                                <li>
+                                    Support end users of the Artemis EHR software, diagnosing workflow issues
+                                    across multiple integrated modules.
+                                </li>
+                                <li>
+                                    Maintain data quality through validation checks, catching inconsistencies
+                                    before they reach downstream systems.
+                                </li>
+                                <li>
+                                    Track application updates and defects in Jira, documenting reproduction
+                                    steps and resolutions in the internal knowledge base.
+                                </li>
+                            </ul>
+                        </div>
+
+                        {/* ROLE 2 - RED TECHNOLOGIES */}
                         <div style={{ marginBottom: "1.75rem" }}>
                             <h3>Application Support Analyst | Red Technologies | Indianapolis, IN</h3>
                             <p style={{ fontStyle: "italic" }}>June 2024 to June 2025</p>
                             <ul style={{ paddingLeft: "1.5rem" }}>
                                 <li>
-                                    Resolved customer issues daily, achieving a 95% satisfaction rate by
-                                    pro-actively managing incidents across web applications, databases,
-                                    integrated systems, and identity management.
+                                    <strong>Designed and shipped an AI-driven ticketing automation</strong>
+                                    {" "}after analyzing Jira ticket data to identify high-volume support issues
+                                    suitable for automation; pitched the solution to leadership and collaborated
+                                    with development to design and implement it. Recognized as
+                                    {" "}<strong>Employee of the Quarter</strong>.
                                 </li>
                                 <li>
-                                    Performed root cause analysis using logs, SQL queries, ITSM platforms,
-                                    and monitoring/observability tools to identify problems and reduce
-                                    incident recurrence.
+                                    Resolved customer issues daily with a <strong>95% satisfaction rate</strong>,
+                                    managing incidents across web applications, databases, integrated systems,
+                                    and identity management.
                                 </li>
                                 <li>
-                                    Improved application reliability through systematic debugging of web
-                                    applications, ensuring timely resolution of critical issues within SLA.
+                                    Performed root cause analysis using logs, SQL queries, ITSM platforms, and
+                                    observability tools (Datadog) to identify defects and reduce incident
+                                    recurrence.
                                 </li>
                                 <li>
-                                    Improved incident resolution times by implementing structured incident
-                                    logs and knowledge-based documentation, fostering collaboration and
-                                    quick access to critical information.
+                                    Improved incident resolution times by implementing structured incident logs
+                                    and knowledge-base documentation, enabling faster team access to critical
+                                    information.
                                 </li>
                                 <li>
-                                    Worked closely with cross-functional teams to identify and resolve
-                                    complex issues, leveraging strong communication skills to provide
-                                    actionable insights and ensure timely resolutions for customer success.
-                                </li>
-                                <li>
-                                    Analyzed Jira ticketing data to identify high-volume support issues
-                                    suitable for automation; pitched the solution to leadership and
-                                    collaborated with development to design and implement AI ticketing
-                                    automation, optimizing work-flows and earning Employee of the Quarter.
+                                    Partnered with cross-functional engineering teams to diagnose and resolve
+                                    complex production issues within SLA.
                                 </li>
                             </ul>
                         </div>
 
-                        {/* ROLE 2 */}
-                        <div style={{ marginBottom: "1.75rem" }}>
+                        {/* ROLE 3 - SOFTWARE SOLUTION INC */}
+                        <div>
                             <h3>Software Support Specialist II | Software Solution Inc | Avon, IN</h3>
                             <p style={{ fontStyle: "italic" }}>October 2019 to June 2024</p>
                             <ul style={{ paddingLeft: "1.5rem" }}>
                                 <li>
-                                    Provided end-to-end technical support, including installation,
-                                    configuration, training, and troubleshooting, enabling consistent
-                                    and reliable use of enterprise software.
+                                    Delivered end-to-end technical support &mdash; installation, configuration,
+                                    training, and troubleshooting &mdash; for enterprise software in high-volume
+                                    production environments.
                                 </li>
                                 <li>
-                                    Delivered remote and on-site support to resolve software and hardware
-                                    integration issues in high-volume production environments, minimizing
-                                    downtime and maintaining operational continuity.
+                                    Managed implementation projects, coordinating with equipment vendors and
+                                    clients to install, test, validate, and troubleshoot automation technology
+                                    and ensure dependable data collection.
                                 </li>
                                 <li>
-                                    Managed implementation projects, coordinating with equipment vendors
-                                    and clients to install, test, validate, and troubleshoot automation
-                                    technology, ensuring accurate data collection and dependable operation.
+                                    Created and updated technical documentation, streamlining support processes
+                                    and reducing time-to-resolution for the team.
                                 </li>
                                 <li>
-                                    Created and updated technical documentation, streamlining support
-                                    processes and enabling quicker access to critical information for team
-                                    members, resulting in improved service delivery.
-                                </li>
-                                <li>
-                                    Developed a comprehensive training program for new support hires,
-                                    enhancing team capability and accelerating knowledge continuity within
-                                    3 months.
-                                </li>
-                            </ul>
-                        </div>
-
-                        {/* ROLE 3 */}
-                        <div>
-                            <h3>
-                                Transcription System Coordinator | Community Health Network | Indianapolis, IN
-                            </h3>
-                            <p style={{ fontStyle: "italic" }}>November 2016 to October 2019</p>
-                            <ul style={{ paddingLeft: "1.5rem" }}>
-                                <li>
-                                    Delivered technical support as the subject matter expert (SME) for
-                                    dictation systems, enhancing user experience across multiple clinical
-                                    environments and hospital domains.
-                                </li>
-                                <li>
-                                    Achieved high customer satisfaction by effectively managing incident
-                                    queues and resolving transcription platform errors within SLA,
-                                    ensuring seamless clinical operations.
-                                </li>
-                                <li>
-                                    Troubleshot complex HL7 interface errors and system issues by analyzing
-                                    logs, work-flows, and integration points across upstream and downstream
-                                    systems.
+                                    Built a comprehensive onboarding program for new support hires, accelerating
+                                    knowledge continuity within three months.
                                 </li>
                             </ul>
                         </div>
