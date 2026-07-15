@@ -47,7 +47,7 @@ const Resume = () => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "flex-start",
-                padding: "2rem",
+                padding: "clamp(1rem, 4vw, 2rem)",
                 boxSizing: "border-box",
             }}
         >
@@ -102,7 +102,7 @@ const Resume = () => {
                     id="resume-content"
                     style={{
                         backgroundColor: "#ffffff",
-                        padding: "2rem",
+                        padding: "clamp(1.25rem, 4vw, 2rem)",
                         borderRadius: "12px",
                         boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
                         lineHeight: "1.8rem",
