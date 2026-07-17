@@ -63,7 +63,7 @@ const Home = () => {
                         color: '#6B7280'
                     }}
                 >
-                    I&rsquo;m a full-stack Software Engineer who builds and delivers production-ready applications from front to back. My experience includes event-sourced backend services in ASP.NET Core, modern front-end applications with React and Astro, cross-platform mobile applications with .NET MAUI, and cloud deployments on AWS using EC2 and RDS.
+                    I&rsquo;m a full-stack Software Engineer who builds and delivers production-ready applications from front-end to back-end. My experience includes event-sourced backend services in ASP.NET Core, modern front-end applications with React and Astro, cross-platform mobile applications with .NET MAUI, and cloud deployments on AWS using EC2 and RDS.
                 </p>
 
                 <p
